@@ -8,6 +8,7 @@ using Microsoft.EntityFrameworkCore;
 using MyMovieAPI.Models;
 using MyMovieApi.Models;
 using Microsoft.AspNetCore.Cors;
+using MakingHttpRequest;
 
 namespace MyMovies.Controllers
 {
@@ -17,10 +18,12 @@ namespace MyMovies.Controllers
     public class MyMoviesController : ControllerBase
     {
         private readonly MyMovieContext _context;
+        private readonly IExternalMovies _externalMovies;
 
-        public MyMoviesController(MyMovieContext context)
+        public MyMoviesController(MyMovieContext context, IExternalMovies externalMovies)
         {
             _context = context;
+            _externalMovies = externalMovies;
         }
 
         // GET: api/MyMovies
@@ -44,6 +47,12 @@ namespace MyMovies.Controllers
             }
 
             return MovieDTO(myMovie);
+        }
+
+        [HttpGet("download")]
+        public async Task<string> Get()
+        {
+            return await _externalMovies.Get();
         }
 
         // PUT: api/MyMovies/5

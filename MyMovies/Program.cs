@@ -1,4 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using MakingHttpRequest;
+using Microsoft.EntityFrameworkCore;
 using MyMovieApi.Models;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -9,6 +10,7 @@ var connectionString = builder.Configuration.GetConnectionString("Movies") ?? "D
 // Add services to the container.
 
 builder.Services.AddControllers();
+builder.Services.AddHttpClient<IExternalMovies, ExternalMovies>();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddSqlite<MyMovieContext>(connectionString);
 builder.Services.AddEndpointsApiExplorer();
