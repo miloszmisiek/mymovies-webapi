@@ -11,9 +11,9 @@ using Microsoft.AspNetCore.Cors;
 using MakingHttpRequest;
 
 namespace MyMovies.Controllers
-{
+{ 
     
-    [Route("api/[controller]")]
+    [Route("/")]
     [ApiController]
     public class MyMoviesController : ControllerBase
     {
@@ -48,7 +48,7 @@ namespace MyMovies.Controllers
 
             return MovieDTO(myMovie);
         }
-
+        // GET api/MyMovies/download/
         [HttpGet("download")]
         public async Task<string> Get()
         {
@@ -56,7 +56,6 @@ namespace MyMovies.Controllers
         }
 
         // PUT: api/MyMovies/5
-        // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPut("{id}")]
         public async Task<IActionResult> PutMyMovie(long id, MyMovieDTO myMovieDTO)
         {
@@ -97,7 +96,6 @@ namespace MyMovies.Controllers
         }
 
         // POST: api/MyMovies
-        // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPost]
         public async Task<ActionResult<MyMovieDTO>> PostMyMovie(MyMovieDTO myMovieDTO)
         {
@@ -145,4 +143,5 @@ namespace MyMovies.Controllers
                Rate = movie.Rate
            };
     }
+
 }

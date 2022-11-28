@@ -12,12 +12,12 @@ namespace MyMovies.Migrations
                 name: "MyMovies",
                 columns: table => new
                 {
-                    Id = table.Column<long>(type: "INTEGER", nullable: false)
-                        .Annotation("Sqlite:Autoincrement", true),
-                    Title = table.Column<string>(type: "TEXT", nullable: true),
-                    Director = table.Column<string>(type: "TEXT", nullable: true),
-                    Year = table.Column<int>(type: "INTEGER", nullable: false),
-                    Rate = table.Column<float>(type: "REAL", nullable: false)
+                    Id = table.Column<long>(type: "bigint", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    Title = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Director = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Year = table.Column<int>(type: "int", nullable: false),
+                    Rate = table.Column<float>(type: "real", nullable: false)
                 },
                 constraints: table =>
                 {
