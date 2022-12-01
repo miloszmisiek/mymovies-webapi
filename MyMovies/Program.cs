@@ -1,20 +1,27 @@
 ﻿using System.Configuration;
 using MakingHttpRequest;
+using Microsoft.Data.SqlClient;
 using Microsoft.EntityFrameworkCore;
 using MyMovieApi.Models;
-
+using System.Data.SqlClient;
 
 var builder = WebApplication.CreateBuilder(args);
-//var connectionString = builder.Configuration.GetConnectionString("Movies") ?? "Data Source=Movies.db";
-//var connectionString = builder.Configuration.GetConnectionString("AZURE_SQL_CONNECTIONSTRING") ;
 
 builder.Services.AddControllers();
 builder.Services.AddHttpClient<IExternalMovies, ExternalMovies>();
-
-builder.Services.AddDbContext<MyMovieContext>(options =>
-        options.UseSqlServer(builder.Configuration.GetConnectionString("AZURE_SQL_CONNECTION")));
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
+
+if (builder.Environment.IsProduction())
+{
+    builder.Services.AddDbContext<MyMovieContext>(options =>
+        options.UseSqlServer(builder.Configuration.GetConnectionString("AzureSqlConnectionString")));
+}
+else
+{
+    builder.Services.AddDbContext<MyMovieContext>(opt =>
+        opt.UseInMemoryDatabase("MyMovies"));
+}
 
 var app = builder.Build();
 

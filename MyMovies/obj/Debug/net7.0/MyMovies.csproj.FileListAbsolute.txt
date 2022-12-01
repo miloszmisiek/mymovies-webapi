@@ -305,3 +305,5 @@
 /Users/miloszmisiek/Projects/MyMovies/MyMovies/obj/Debug/net7.0/MyMovies.pdb
 /Users/miloszmisiek/Projects/MyMovies/MyMovies/obj/Debug/net7.0/MyMovies.genruntimeconfig.cache
 /Users/miloszmisiek/Projects/MyMovies/MyMovies/obj/Debug/net7.0/ref/MyMovies.dll
+/Users/miloszmisiek/Projects/MyMovies/MyMovies/bin/Debug/net7.0/Azure.Extensions.AspNetCore.Configuration.Secrets.dll
+/Users/miloszmisiek/Projects/MyMovies/MyMovies/bin/Debug/net7.0/Azure.Security.KeyVault.Secrets.dll
