@@ -20,7 +20,7 @@ if (builder.Environment.IsProduction())
 else
 {
     builder.Services.AddDbContext<MyMovieContext>(opt =>
-        opt.UseInMemoryDatabase("MyMovies"));
+        opt.UseSqlServer(builder.Configuration.GetConnectionString("DevString")));
 }
 
 var app = builder.Build();

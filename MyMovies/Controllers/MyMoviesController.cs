@@ -133,7 +133,7 @@ namespace MyMovies.Controllers
         {
             return (_context.MyMovies?.Any(e => e.Id == id)).GetValueOrDefault();
         }
-       private static MyMovieDTO MovieDTO(MyMovie movie) =>
+        private static MyMovieDTO MovieDTO(MyMovie movie) =>
            new MyMovieDTO
            {
                Id = movie.Id,
